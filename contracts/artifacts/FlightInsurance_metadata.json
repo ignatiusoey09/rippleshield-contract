@@ -1,0 +1,111 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint16",
+						"name": "required",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint256",
+						"name": "available",
+						"type": "uint256"
+					}
+				],
+				"name": "InsufficientBalance",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "receipient",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint16",
+						"name": "amount",
+						"type": "uint16"
+					}
+				],
+				"name": "Sent",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "userAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "enum FlightInsurance.InsuranceTier",
+						"name": "_userTier",
+						"type": "uint8"
+					}
+				],
+				"name": "makePayout",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"errors": {
+				"InsufficientBalance(uint16,uint256)": [
+					{
+						"details": "Error triggered when this contract has insufficient funds"
+					}
+				]
+			},
+			"events": {
+				"Sent(address,uint16)": {
+					"details": "Event triggered when transaction is successful"
+				}
+			},
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/FlightInsurance.sol": "FlightInsurance"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/FlightInsurance.sol": {
+			"keccak256": "0x173373b53425cf279003417ece6bed2e1c44ffce7497217946813bdb9a9b688d",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://d332d9cea4db8aee57c2c9426d84da8c2409cc6f2d528aaa28bfd658a8e7a516",
+				"dweb:/ipfs/QmcyfbqU53XtiiUZGJfCP7AjG1hhv9Syd1EdecMskLqhhM"
+			]
+		}
+	},
+	"version": 1
+}
