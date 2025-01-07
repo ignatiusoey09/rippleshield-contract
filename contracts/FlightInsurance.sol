@@ -29,7 +29,7 @@ contract FlightInsurance {
             // XRP equal to SGD3500
                 payout = 1048;
         } else {
-            revert();
+            revert("Invalid insurance tier!");
         }
         return payout;
     }
@@ -53,7 +53,7 @@ contract FlightInsurance {
         InsuranceTier insuranceTier = InsuranceTier(tier);
         uint256 payout = calculatePayout(insuranceTier);
 
-        bytes memory returnPayload = abi.encode();
+        bytes memory returnPayload = ""; //Empty payload for now
         cgpGateway.callContractWithToken(sourceChain, userAddress, returnPayload, "XRP", payout);
         emit PayoutSent(userAddress, payout);
     }
