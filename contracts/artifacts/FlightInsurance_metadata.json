@@ -113,11 +113,11 @@
 	},
 	"sources": {
 		"contracts/FlightInsurance.sol": {
-			"keccak256": "0x79858e6133a64bce80bce79cfae2fb727afd149d105b8c6d19d1ab211145559c",
+			"keccak256": "0xfe561db9301b37d77c43cc7d418d22e0e9f37e2e7f3c19da011f8bb07fab9421",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://77159415c01ca3cb12e64bf2e209270ddffb901e767782cd4f07c99653137c1a",
-				"dweb:/ipfs/QmbX8EXq6MsUozG3mqzwYwp6YfmMxEJy84V3ZEwzgiYswb"
+				"bzz-raw://f2a6d26f2c8d9bc4b7c3c1a9523dbe68e56da9b68191e0aa4f089377cd0969c8",
+				"dweb:/ipfs/QmNjMLrYw6b13Sa2fsgGN9moCUp9iDWhfNnkkwTWtBqGT8"
 			]
 		},
 		"https://github.com/axelarnetwork/axelar-cgp-solidity/blob/main/contracts/interfaces/IAxelarGateway.sol": {
