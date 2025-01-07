@@ -24,10 +24,10 @@ contract FlightInsurance {
         uint16 payout;
         if (_userTier == InsuranceTier.Basic) {
             // XRP equal to SGD1000
-            payout = 300;
+            payout = 1;
         } else if (_userTier == InsuranceTier.Enhanced) {
             // XRP equal to SGD3500
-                payout = 1048;
+                payout = 3;
         } else {
             revert("Invalid insurance tier!");
         }
@@ -40,10 +40,8 @@ contract FlightInsurance {
     event PayoutSent(string receipient, uint256 amount);
 
     
-    function execute(
-        bytes32 commandId, 
+    function execute( 
         string calldata sourceChain, 
-        string calldata sourceAddress, 
         bytes calldata payload
     ) external {
         //payload contains: insurance tier and user XRPL wallet address

@@ -8,67 +8,81 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint16",
-						"name": "required",
-						"type": "uint16"
-					},
-					{
-						"internalType": "uint256",
-						"name": "available",
-						"type": "uint256"
+						"internalType": "address",
+						"name": "gatewayAddress",
+						"type": "address"
 					}
 				],
-				"name": "InsufficientBalance",
-				"type": "error"
+				"stateMutability": "nonpayable",
+				"type": "constructor"
 			},
 			{
 				"anonymous": false,
 				"inputs": [
 					{
 						"indexed": false,
-						"internalType": "address",
+						"internalType": "string",
 						"name": "receipient",
-						"type": "address"
+						"type": "string"
 					},
 					{
 						"indexed": false,
-						"internalType": "uint16",
+						"internalType": "uint256",
 						"name": "amount",
-						"type": "uint16"
+						"type": "uint256"
 					}
 				],
-				"name": "Sent",
+				"name": "PayoutSent",
 				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "cgpGateway",
+				"outputs": [
+					{
+						"internalType": "contract IAxelarGateway",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			},
 			{
 				"inputs": [
 					{
-						"internalType": "address payable",
-						"name": "userAddress",
-						"type": "address"
+						"internalType": "string",
+						"name": "sourceChain",
+						"type": "string"
 					},
 					{
-						"internalType": "enum FlightInsurance.InsuranceTier",
-						"name": "_userTier",
-						"type": "uint8"
+						"internalType": "bytes",
+						"name": "payload",
+						"type": "bytes"
 					}
 				],
-				"name": "makePayout",
+				"name": "execute",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "lastReceivedMessage",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			}
 		],
 		"devdoc": {
-			"errors": {
-				"InsufficientBalance(uint16,uint256)": [
-					{
-						"details": "Error triggered when this contract has insufficient funds"
-					}
-				]
-			},
 			"events": {
-				"Sent(address,uint16)": {
+				"PayoutSent(string,uint256)": {
 					"details": "Event triggered when transaction is successful"
 				}
 			},
@@ -99,11 +113,19 @@
 	},
 	"sources": {
 		"contracts/FlightInsurance.sol": {
-			"keccak256": "0x173373b53425cf279003417ece6bed2e1c44ffce7497217946813bdb9a9b688d",
+			"keccak256": "0x79858e6133a64bce80bce79cfae2fb727afd149d105b8c6d19d1ab211145559c",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://d332d9cea4db8aee57c2c9426d84da8c2409cc6f2d528aaa28bfd658a8e7a516",
-				"dweb:/ipfs/QmcyfbqU53XtiiUZGJfCP7AjG1hhv9Syd1EdecMskLqhhM"
+				"bzz-raw://77159415c01ca3cb12e64bf2e209270ddffb901e767782cd4f07c99653137c1a",
+				"dweb:/ipfs/QmbX8EXq6MsUozG3mqzwYwp6YfmMxEJy84V3ZEwzgiYswb"
+			]
+		},
+		"https://github.com/axelarnetwork/axelar-cgp-solidity/blob/main/contracts/interfaces/IAxelarGateway.sol": {
+			"keccak256": "0x810f2eab60267046fc188b8357b73d81d7b7959959781cb8b90b7957d162b05e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://48874572a20516fdd7748d5570693d47b86fbb1e5970a0ed18a6805bd6ea1bc2",
+				"dweb:/ipfs/QmNSKyRwZXWnmiwj4wX9dCyD9AU4vWYb85vuhCnrrnWsfa"
 			]
 		}
 	},
