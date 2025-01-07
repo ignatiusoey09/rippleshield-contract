@@ -33,11 +33,6 @@ contract FlightInsurance {
         }
         return payout;
     }
-    
-    /** 
-    * @dev Error triggered when this contract has insufficient funds
-    */
-    error InsufficientBalance(uint16 required, uint256 available);
 
     /** 
     * @dev Event triggered when transaction is successful
