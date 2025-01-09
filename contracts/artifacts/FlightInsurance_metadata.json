@@ -9,7 +9,7 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "gatewayAddress",
+						"name": "companyWallet",
 						"type": "address"
 					}
 				],
@@ -21,9 +21,34 @@
 				"inputs": [
 					{
 						"indexed": false,
-						"internalType": "string",
+						"internalType": "address",
 						"name": "receipient",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "returnData",
 						"type": "string"
+					}
+				],
+				"name": "PayoutFailed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "receipient",
+						"type": "address"
 					},
 					{
 						"indexed": false,
@@ -36,32 +61,19 @@
 				"type": "event"
 			},
 			{
-				"inputs": [],
-				"name": "cgpGateway",
-				"outputs": [
+				"inputs": [
 					{
-						"internalType": "contract IAxelarGateway",
-						"name": "",
+						"internalType": "uint8",
+						"name": "_tier",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "userWallet",
 						"type": "address"
 					}
 				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "sourceChain",
-						"type": "string"
-					},
-					{
-						"internalType": "bytes",
-						"name": "payload",
-						"type": "bytes"
-					}
-				],
-				"name": "execute",
+				"name": "initiatePayout",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -82,7 +94,10 @@
 		],
 		"devdoc": {
 			"events": {
-				"PayoutSent(string,uint256)": {
+				"PayoutFailed(address,uint256,string)": {
+					"details": "Event triggered when transaction failed"
+				},
+				"PayoutSent(address,uint256)": {
 					"details": "Event triggered when transaction is successful"
 				}
 			},
@@ -113,19 +128,11 @@
 	},
 	"sources": {
 		"contracts/FlightInsurance.sol": {
-			"keccak256": "0xfe561db9301b37d77c43cc7d418d22e0e9f37e2e7f3c19da011f8bb07fab9421",
+			"keccak256": "0x205770f5cd8edd084cd112e5a26c393e345c70cef86635e1f0bbc3aa53a383d6",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://f2a6d26f2c8d9bc4b7c3c1a9523dbe68e56da9b68191e0aa4f089377cd0969c8",
-				"dweb:/ipfs/QmNjMLrYw6b13Sa2fsgGN9moCUp9iDWhfNnkkwTWtBqGT8"
-			]
-		},
-		"https://github.com/axelarnetwork/axelar-cgp-solidity/blob/main/contracts/interfaces/IAxelarGateway.sol": {
-			"keccak256": "0x810f2eab60267046fc188b8357b73d81d7b7959959781cb8b90b7957d162b05e",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://48874572a20516fdd7748d5570693d47b86fbb1e5970a0ed18a6805bd6ea1bc2",
-				"dweb:/ipfs/QmNSKyRwZXWnmiwj4wX9dCyD9AU4vWYb85vuhCnrrnWsfa"
+				"bzz-raw://6a727e6958b355169be11bd6420e9f586bd7eb8790f418727bd7b8cd2f6f433c",
+				"dweb:/ipfs/QmbqY2DGV88XcC4YUkobAdLHZ67u4Aw4YW6pLQvfmBxki8"
 			]
 		}
 	},
