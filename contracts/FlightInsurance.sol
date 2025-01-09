@@ -1,14 +1,29 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.8.2 <0.9;
 
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
 contract FlightInsurance {
+    IERC20 xrpToken;
     enum InsuranceTier {Basic, Enhanced}
     string public lastReceivedMessage;
+    address companyWallet;
 
-    constructor(address companyWallet) {
-        require(companyWallet != address(0), "Invalid sending wallet!");
+    constructor(address _companyWallet, address _tokenAddress) payable {
+        require(_companyWallet != address(0), "Invalid sending wallet!");
+        companyWallet = _companyWallet;
+        xrpToken = IERC20(_tokenAddress);
     }  
 
+    event ReceivedFunding(uint256 amount);
+
+    receive() external payable {
+        emit ReceivedFunding(msg.value);
+    }
+
+    function depositXRP(uint256 amount) public {
+        require(xrpToken.transferFrom(msg.sender, address(this), amount), "Transfer failed");
+    }
 
     /** 
     * @dev Calculates the correct payout based on insurance tier
@@ -36,7 +51,7 @@ contract FlightInsurance {
     /** 
     * @dev Event triggered when transaction failed
     */
-    event PayoutFailed(address receipient, uint256 amount, string returnData);
+    event PayoutFailed(address receipient, uint256 amount);
 
     
     function initiatePayout( 
@@ -47,13 +62,13 @@ contract FlightInsurance {
 
         InsuranceTier insuranceTier = InsuranceTier(_tier);
         uint16 payout = calculatePayout(insuranceTier);
-        (bool sent, bytes memory data) = payable(userWallet).call{value: payout}("");
-        if (sent) {
+        bool result = xrpToken.transferFrom(address(this), userWallet, payout * 10**18);
+        if (result) {
             emit PayoutSent(userWallet, payout);
         } else {
-            string memory dataString = abi.decode(data, (string));
-            emit PayoutFailed(userWallet, payout, dataString);
+            emit PayoutFailed(userWallet, payout);
         }
+        
     }
 
 }

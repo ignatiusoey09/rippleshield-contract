@@ -9,11 +9,16 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "companyWallet",
+						"name": "_companyWallet",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_tokenAddress",
 						"type": "address"
 					}
 				],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "constructor"
 			},
 			{
@@ -30,12 +35,6 @@
 						"internalType": "uint256",
 						"name": "amount",
 						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "string",
-						"name": "returnData",
-						"type": "string"
 					}
 				],
 				"name": "PayoutFailed",
@@ -59,6 +58,32 @@
 				],
 				"name": "PayoutSent",
 				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "ReceivedFunding",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "depositXRP",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			},
 			{
 				"inputs": [
@@ -90,11 +115,15 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
 			}
 		],
 		"devdoc": {
 			"events": {
-				"PayoutFailed(address,uint256,string)": {
+				"PayoutFailed(address,uint256)": {
 					"details": "Event triggered when transaction failed"
 				},
 				"PayoutSent(address,uint256)": {
@@ -127,12 +156,20 @@
 		"remappings": []
 	},
 	"sources": {
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0xe06a3f08a987af6ad2e1c1e774405d4fe08f1694b67517438b467cecf0da0ef7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://df6f0c459663c9858b6cba2cda1d14a7d05a985bed6d2de72bd8e78c25ee79db",
+				"dweb:/ipfs/QmeTTxZ7qVk9rjEv2R4CpCwdf8UMCcRqDNMvzNxHc3Fnn9"
+			]
+		},
 		"contracts/FlightInsurance.sol": {
-			"keccak256": "0x205770f5cd8edd084cd112e5a26c393e345c70cef86635e1f0bbc3aa53a383d6",
+			"keccak256": "0xbfd1ef6365d40c629793a0c1853103c16080e9b13c1edde411c2cc1f6240e8fc",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://6a727e6958b355169be11bd6420e9f586bd7eb8790f418727bd7b8cd2f6f433c",
-				"dweb:/ipfs/QmbqY2DGV88XcC4YUkobAdLHZ67u4Aw4YW6pLQvfmBxki8"
+				"bzz-raw://b551c6f5be384dc9038a573c963e73cc798a8e3cd05c5356e7608bb6b07c6114",
+				"dweb:/ipfs/QmUwKpstxAymb4G24mxFKLvnARjT87LAkEuQKgcHVW5pxG"
 			]
 		}
 	},
